@@ -1,0 +1,99 @@
+.categories-container-detail{
+    position: absolute;
+    top: 55px;
+    background-color: white;
+    padding: 12px 20px;
+    z-index: 99;
+    width: 27%;
+    overflow: hidden;
+    margin-top: 15px;
+  }
+  
+  
+
+  .categories-scroll-detail {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    position: relative;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-width: 1200px;
+    padding: 0 30px;
+  }
+  
+  
+ 
+  .categories-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scroll-fade-left,
+  .scroll-fade-right {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 100%; 
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .scroll-fade-left {
+    left: 0;
+    background: linear-gradient(to right, white 0%, transparent 100%);
+  }
+  
+  .scroll-fade-right {
+    right: 0;
+    background: linear-gradient(to left, white 0%, transparent 100%);
+  }
+  
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .scroll-button:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .scroll-button.left {
+    left: 8px;
+  }
+  
+  .scroll-button.right {
+    right: 8px;
+  }
+  
+  .category-chip {
+    background-color: #f2f2f2;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    min-width: fit-content;
+  }
+  
+  .category-chip:hover {
+    background-color: #e5e5e5;
+  }
+  
+  .category-chip.active {
+    background-color: #030303;
+    color: white;
+  }

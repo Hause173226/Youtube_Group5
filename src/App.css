@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+  }
+  
+  .main-content {
+    display: flex;
+    flex: 1;
+    background-color: #f9f9f9;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 24px;
+    margin-left: 240px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .content.sidebar-closed {
+    margin-left: 0;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .loading-spinner svg {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Ant Design Customizations */
+  .ant-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
