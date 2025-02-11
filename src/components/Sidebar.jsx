@@ -11,7 +11,7 @@ function Sidebar({ isOpen }) {
 
   const mainMenu = [
     { icon: <FaHome />, label: 'Home', path: '/' },
-    { icon: <FaYoutube />, label: 'Shorts' },
+    { icon: <FaYoutube />, label: 'Shorts', path: '/shorts' },
     { icon: <FaYoutube />, label: 'Subscriptions' }
   ];
 

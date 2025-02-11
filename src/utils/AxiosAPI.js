@@ -146,6 +146,40 @@ const fetchRelatedVideos = async (videoId) => {
   }
 };
 
+
+const fetchShortsVideos = async (pageToken = "") => {
+  try {
+    const searchResponse = await youtubeApi.get("/search", {
+      params: {
+        part: "snippet",
+        maxResults: MAX_RESULTS,
+        q: "", // Không cần từ khóa, chỉ lọc theo thời lượng
+        type: "video",
+        videoDuration: "short", // Chỉ lấy video có thời lượng dưới 60 giây
+        pageToken,
+      },
+    });
+
+    const videoIds = searchResponse.data.items
+      .map((item) => item.id.videoId)
+      .join(",");
+
+    const videoResponse = await youtubeApi.get("/videos", {
+      params: {
+        part: "snippet,statistics,contentDetails",
+        id: videoIds,
+      },
+    });
+
+    return {
+      items: videoResponse.data.items,
+      nextPageToken: searchResponse.data.nextPageToken,
+    };
+  } catch (error) {
+    console.error("Error fetching Shorts videos:", error);
+    throw error;
+  }
+
 export const useTopLiveGames = (apiKey) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -169,6 +203,7 @@ export const useTopLiveGames = (apiKey) => {
   }, [apiKey]);
 
   return { games, loading };
+
 };
 
 export {
@@ -177,4 +212,5 @@ export {
   fetchVideosByCategory,
   fetchVideoDetails,
   fetchRelatedVideos,
+  fetchShortsVideos,
 };
