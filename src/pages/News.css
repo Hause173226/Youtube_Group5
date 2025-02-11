@@ -1,110 +1,208 @@
 .trending-container {
-    padding: 0 24px;
+  padding: 0 24px;
+}
+
+.trending-header {
+  top: 50px;
+  background-color: white;
+  z-index: 100;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.trending-icon-title {
+  display: flex;
+  align-items: center;
+}
+
+.trending-icon img {
+  margin-left: 10px;
+  width: 150px;
+  height: 100px;
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trending-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: #ff0000;
+}
+
+.trending-header h1 {
+  position: relative;
+  right: 30px;
+  top: 10px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #0f0f0f;
+  margin: 0;
+}
+
+.trending-tabs {
+  margin-bottom: -17px;
+  position: relative;
+}
+
+.trending-tabs .ant-tabs-nav {
+  margin: 0;
+}
+
+.trending-tabs .ant-tabs-nav::before {
+  border: none;
+}
+
+.trending-tabs .ant-tabs-tab {
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 450;
+}
+
+.trending-tabs .ant-tabs-tab-active {
+  font-weight: 600;
+  border-bottom: 2px solid black;
+}
+
+.trending-tabs .ant-tabs-ink-bar {
+  background: #0f0f0f;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loading-spinner svg {
+  animation: spin 1s linear infinite;
+}
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 55vh;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  color: white;
+}
+
+.hero-info {
+  flex: 1;
+  padding: 30px;
+  font-size: 16px;
+}
+
+.hero-info h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.hero-info .channel {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .trending-header {
-    top: 50px;
-    background-color: white;
-    z-index: 100;
-    padding: 20px 0;
-    border-bottom: 1px solid #e5e5e5;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .trending-icon-title {
-    display: flex;
-    align-items: center;
+}
+
+.hero-info h2,
+.hero-info .channel {
+  animation: fadeUp 0.5s ease-out;
+}
+
+.hero-video {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16/9;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.hero-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.hero-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(to right, black 10%, rgba(0, 0, 0, 0) 90%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .trending-icon img {
-    width: 150px;
-    height: 100px;
-    background-color: #f9f9f9;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+  100% {
+    transform: rotate(360deg);
   }
-  
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trending-container {
+    padding: 0 16px;
+  }
+
+  .trending-icon {
+    width: 60px;
+    height: 60px;
+  }
+
   .trending-icon svg {
-    width: 40px;
-    height: 40px;
-    fill: #ff0000;
+    width: 30px;
+    height: 30px;
   }
-  
-  .trending-header h1 {
-    position: relative;
-    right: 30px;
-    top: 10px;
-    font-size: 30px;
-    font-weight: 600;
-    color: #0f0f0f;
-    margin: 0;
-  }
-  
-  .trending-tabs {
-    margin-bottom: -17px;
-  }
-  
-  .trending-tabs .ant-tabs-nav {
-    margin: 0;
-  }
-  
-  .trending-tabs .ant-tabs-nav::before {
-    border: none;
-  }
-  
+
   .trending-tabs .ant-tabs-tab {
-    padding: 12px 22px;
-    font-size: 16px;
-    font-weight: 450;
+    padding: 12px 16px;
   }
-  
-  .trending-tabs .ant-tabs-tab-active {
-    font-weight: 600;
-  }
-  
-  .trending-tabs .ant-tabs-ink-bar {
-    background: #0f0f0f;
-  }
-  
-  .loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .loading-spinner svg {
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .trending-container {
-      padding: 0 16px;
-    }
-  
-    .trending-icon {
-      width: 60px;
-      height: 60px;
-    }
-  
-    .trending-icon svg {
-      width: 30px;
-      height: 30px;
-    }
-  
-    .trending-tabs .ant-tabs-tab {
-      padding: 12px 16px;
-    }
-  }
-  
+}
+
+.top-live-games {
+  padding: 20px;
+}
+
+.games-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.game-card {
+  width: 200px;
+  /* Adjust as needed */
+  text-align: center;
+}
