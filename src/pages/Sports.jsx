@@ -29,7 +29,7 @@ function Sports() {
             const match = duration.match(/PT(\d+)S/);
             const aspectRatio = thumbnails.width / thumbnails.height;
 
-       
+
             if ((match && parseInt(match[1]) <= 60) || aspectRatio <= 1) {
               return false;
             }
@@ -40,7 +40,7 @@ function Sports() {
         if (pageToken === "") {
           setVideos(filteredVideos);
 
-       
+
           setMostPopularVideo(filteredVideos[0]);
         } else {
           setVideos((prev) => [...prev, ...filteredVideos]);
@@ -66,7 +66,7 @@ function Sports() {
     setSidebarOpen(!sidebarOpen);
   };
 
-  
+
   const lastVideoElementRef = useCallback(
     (node) => {
       if (loading) return;
@@ -74,7 +74,7 @@ function Sports() {
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && nextPageToken) {
-          fetchVideos(nextPageToken); 
+          fetchVideos(nextPageToken);
         }
       });
 
@@ -118,11 +118,14 @@ function Sports() {
               <div className="trending-icon-title">
                 <div className="trending-icon">
                   <img
-                    src="//yt3.googleusercontent.com/RV7Xjtmnl7ld6OERcxfHRePw3dfRRAcD5_OyEZHiBIA6DBkQwiL0WjHV4nQDrVwOknlJTTbRfQ=s88-c-k-c0x00ffffff-no-rj-mo"
+
+                    className="sports-icon"
+                    src="https://yt3.googleusercontent.com/RV7Xjtmnl7ld6OERcxfHRePw3dfRRAcD5_OyEZHiBIA6DBkQwiL0WjHV4nQDrVwOknlJTTbRfQ=s176-c-k-c0x00ffffff-no-rj-mo"
                     alt="Sports Icon"
                   />
                 </div>
-                <h1 style={{marginLeft:'50px'}}>Sports</h1>
+                <h1>Sports</h1>
+                <span className="subscribe-button">Subscribe</span>
               </div>
             </div>
 

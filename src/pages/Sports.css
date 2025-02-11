@@ -16,7 +16,7 @@
   }
   
   .trending-icon img {
-    width: 150px;
+    width: 100px;
     height: 100px;
     background-color: #f9f9f9;
     border-radius: 50%;
@@ -33,12 +33,32 @@
   
   .trending-header h1 {
     position: relative;
+    padding-left: 50px;
     right: 30px;
     top: 10px;
     font-size: 30px;
     font-weight: 600;
     color: #0f0f0f;
     margin: 0;
+  } 
+
+  .subscribe-button {
+    background-color: black;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20 px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-right: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: auto;
+    top: 5px;
+  }
+  .subscribe-button:hover {
+    background-color: #333;
+    transform: scale(1.05);
   }
   
   .trending-tabs {
@@ -155,9 +175,9 @@
     pointer-events: none;
     z-index: 2;
   }
-  
 
   
+
   
   @keyframes spin {
     0% {
