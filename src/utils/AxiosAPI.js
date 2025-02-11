@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const API_KEY = "AIzaSyC_KG0a8F9usnTQl_MmTEfL2_elzBpKVNc";
+const API_KEY = "AIzaSyD6pcgd6LI0HmBnvp8VDZvpM4xEIPqG4vE ";
 const MAX_RESULTS = 12;
 
 const youtubeApi = axios.create({
