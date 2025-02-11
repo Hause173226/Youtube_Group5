@@ -1,7 +1,7 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-
-const API_KEY = "AIzaSyBDVfuFt_KJiPcU1MVCcJJn1_WIT0K3_lY";
+const API_KEY = "AIzaSyC_KG0a8F9usnTQl_MmTEfL2_elzBpKVNc";
 const MAX_RESULTS = 12;
 
 const youtubeApi = axios.create({
@@ -146,10 +146,70 @@ const fetchRelatedVideos = async (videoId) => {
   }
 };
 
+export const useTopLiveGames = (apiKey) => {
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTopLiveGames = async () => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/videos?part=snippet,liveBroadcastContent&chart=mostPopular&regionCode=US&videoCategoryId=20&key=${apiKey}`
+        );
+        const data = await response.json();
+        setGames(data.items);
+      } catch (error) {
+        console.error("Error fetching top live games:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTopLiveGames();
+  }, [apiKey]);
+
+  return { games, loading };
+};
+const fetchShortsVideos = async (pageToken = "") => {
+  try {
+    const searchResponse = await youtubeApi.get("/search", {
+      params: {
+        part: "snippet",
+        maxResults: MAX_RESULTS,
+        q: "", // Không cần từ khóa, chỉ lọc theo thời lượng
+        type: "video",
+        videoDuration: "short", // Chỉ lấy video có thời lượng dưới 60 giây
+        pageToken,
+      },
+    });
+
+    const videoIds = searchResponse.data.items
+      .map((item) => item.id.videoId)
+      .join(",");
+
+    const videoResponse = await youtubeApi.get("/videos", {
+      params: {
+        part: "snippet,statistics,contentDetails",
+        id: videoIds,
+      },
+    });
+
+    return {
+      items: videoResponse.data.items,
+      nextPageToken: searchResponse.data.nextPageToken,
+    };
+  } catch (error) {
+    console.error("Error fetching Shorts videos:", error);
+    throw error;
+  }
+};
+
+
 export {
   fetchPopularVideos,
   searchVideos,
   fetchVideosByCategory,
   fetchVideoDetails,
   fetchRelatedVideos,
+  fetchShortsVideos,
 };

@@ -6,8 +6,10 @@ import News from './pages/News';
 import Gaming from './pages/Gaming';
 import Music from './pages/Music';
 import Sports from './pages/Sports';
+import Shorts from './pages/Shorts';
 
 import './App.css';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -20,6 +22,11 @@ function App() {
         <Route path="/gaming" element={<Gaming />} />
         <Route path="/music" element={<Music />} />
         <Route path="/sports" element={<Sports />} />
+
+        <Route path="/shorts" element={<Shorts/>} />
+
+        <Route path="/search" element={<Search />} />
+
 
       </Routes>
     </Router>

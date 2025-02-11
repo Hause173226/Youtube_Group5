@@ -118,6 +118,7 @@ function Sports() {
               <div className="trending-icon-title">
                 <div className="trending-icon">
                   <img
+
                     className="sports-icon"
                     src="https://yt3.googleusercontent.com/RV7Xjtmnl7ld6OERcxfHRePw3dfRRAcD5_OyEZHiBIA6DBkQwiL0WjHV4nQDrVwOknlJTTbRfQ=s176-c-k-c0x00ffffff-no-rj-mo"
                     alt="Sports Icon"
