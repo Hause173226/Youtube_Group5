@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "AIzaSyAQbqvxsgVCSn2KPbfPLHU19Je-HPmCEX4";
+const API_KEY = "AIzaSyC_KG0a8F9usnTQl_MmTEfL2_elzBpKVNc";
 const MAX_RESULTS = 12;
 
 const youtubeApi = axios.create({
@@ -145,10 +145,45 @@ const fetchRelatedVideos = async (videoId) => {
   }
 };
 
+const fetchShortsVideos = async (pageToken = "") => {
+  try {
+    const searchResponse = await youtubeApi.get("/search", {
+      params: {
+        part: "snippet",
+        maxResults: MAX_RESULTS,
+        q: "", // Không cần từ khóa, chỉ lọc theo thời lượng
+        type: "video",
+        videoDuration: "short", // Chỉ lấy video có thời lượng dưới 60 giây
+        pageToken,
+      },
+    });
+
+    const videoIds = searchResponse.data.items
+      .map((item) => item.id.videoId)
+      .join(",");
+
+    const videoResponse = await youtubeApi.get("/videos", {
+      params: {
+        part: "snippet,statistics,contentDetails",
+        id: videoIds,
+      },
+    });
+
+    return {
+      items: videoResponse.data.items,
+      nextPageToken: searchResponse.data.nextPageToken,
+    };
+  } catch (error) {
+    console.error("Error fetching Shorts videos:", error);
+    throw error;
+  }
+};
+
 export {
   fetchPopularVideos,
   searchVideos,
   fetchVideosByCategory,
   fetchVideoDetails,
   fetchRelatedVideos,
+  fetchShortsVideos,
 };
