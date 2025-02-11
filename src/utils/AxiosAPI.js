@@ -146,7 +146,30 @@ const fetchRelatedVideos = async (videoId) => {
   }
 };
 
+export const useTopLiveGames = (apiKey) => {
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchTopLiveGames = async () => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/videos?part=snippet,liveBroadcastContent&chart=mostPopular&regionCode=US&videoCategoryId=20&key=${apiKey}`
+        );
+        const data = await response.json();
+        setGames(data.items);
+      } catch (error) {
+        console.error("Error fetching top live games:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTopLiveGames();
+  }, [apiKey]);
+
+  return { games, loading };
+};
 const fetchShortsVideos = async (pageToken = "") => {
   try {
     const searchResponse = await youtubeApi.get("/search", {
@@ -179,32 +202,8 @@ const fetchShortsVideos = async (pageToken = "") => {
     console.error("Error fetching Shorts videos:", error);
     throw error;
   }
-
-export const useTopLiveGames = (apiKey) => {
-  const [games, setGames] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchTopLiveGames = async () => {
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/videos?part=snippet,liveBroadcastContent&chart=mostPopular&regionCode=US&videoCategoryId=20&key=${apiKey}`
-        );
-        const data = await response.json();
-        setGames(data.items);
-      } catch (error) {
-        console.error("Error fetching top live games:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTopLiveGames();
-  }, [apiKey]);
-
-  return { games, loading };
-
 };
+
 
 export {
   fetchPopularVideos,
