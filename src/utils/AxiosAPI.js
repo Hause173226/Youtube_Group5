@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_KEY = "AIzaSyAQbqvxsgVCSn2KPbfPLHU19Je-HPmCEX4";
+
+const API_KEY = "AIzaSyBDVfuFt_KJiPcU1MVCcJJn1_WIT0K3_lY";
 const MAX_RESULTS = 12;
 
 const youtubeApi = axios.create({
