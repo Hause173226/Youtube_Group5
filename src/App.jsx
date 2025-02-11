@@ -8,6 +8,7 @@ import Music from './pages/Music';
 import Sports from './pages/Sports';
 
 import './App.css';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/gaming" element={<Gaming />} />
         <Route path="/music" element={<Music />} />
         <Route path="/sports" element={<Sports />} />
+        <Route path="/search" element={<Search />} />
 
       </Routes>
     </Router>

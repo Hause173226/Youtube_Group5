@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
-import { 
-  FaBars, 
-  FaYoutube, 
-  FaSearch, 
-  FaVideo, 
-  FaBell, 
+import React, { useState } from "react";
+import {
+  FaBars,
+  FaYoutube,
+  FaSearch,
+  FaVideo,
+  FaBell,
   FaUser,
-  FaMicrophone
-} from 'react-icons/fa';
-import './Header.css';
-import { Link } from 'react-router-dom';
+  FaMicrophone,
+} from "react-icons/fa";
+import "./Header.css";
+import { Link, useNavigate } from "react-router-dom";
 
-function Header({ onMenuClick, onSearch }) {
-  const [searchTerm, setSearchTerm] = useState('');
+function Header({ onMenuClick }) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      onSearch(searchTerm);
+
+      navigate(`/search?q=${searchTerm}`);
     }
   };
 
@@ -29,14 +31,11 @@ function Header({ onMenuClick, onSearch }) {
         </button>
 
         <Link to={"/"}>
-        <div className="logo">
-          <FaYoutube className="youtube-icon" />
-          <span>YouTube</span>
-        </div>
+          <div className="logo">
+            <FaYoutube className="youtube-icon" />
+            <span>YouTube</span>
+          </div>
         </Link>
-
-
-        
       </div>
 
       <form className="search-bar" onSubmit={handleSubmit}>
@@ -51,7 +50,7 @@ function Header({ onMenuClick, onSearch }) {
             <button
               type="button"
               className="clear-search"
-              onClick={() => setSearchTerm('')}
+              onClick={() => setSearchTerm("")}
             >
               ✕
             </button>
