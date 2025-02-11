@@ -1,0 +1,218 @@
+.searchpage {
+    color: rgb(137, 140, 141);
+    padding: 10px 80px;
+    background-color: rgb(236, 233, 233);
+    position: relative;
+    left: 16%;
+    width: 84%;
+  }
+  
+  .filter {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 30px;
+  }
+  .filterIcon {
+    margin-right: 5px;
+    color: #606060 !important;
+  }
+  .filterHeading {
+    font-size: 14px;
+    color: #606060;
+    font-weight: 700;
+  }
+  .channelTitle {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 30px;
+    cursor: pointer;
+  }
+
+  .titleLeft {
+    flex: 0.3;
+  }
+  .titleMiddle {
+    flex: 0.5;
+  }
+  
+  .titleRight {
+    flex: 0.2;
+  
+    display: flex;
+    align-items: center;
+  }
+  .subscribe {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #606060;
+    background-color: rgb(219, 219, 219);
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+  }
+  .channelName {
+    font-size: 18px;
+  }
+  .bellIcon {
+    color: #606060 !important;
+    margin-left: 10px;
+  }
+  .video-Title {
+    display: flex;
+    margin-bottom: 20px;
+
+  }
+
+.div-search{
+  display: flex;
+}
+
+.channelImg {
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  object-fit: contain;
+  margin-left: 100px;
+}
+
+
+
+
+
+
+  
+  h4{
+    margin: 10px ;
+  }
+  .image_div {
+    height: 200px;
+    width: 360px;
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  
+  
+  .title_div {
+    font-size: 18px;
+    line-height: 26px;
+    color: #030303;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .vertBtn {
+    margin-left: 200px !important;
+    color: rgb(178, 175, 175) !important;
+    display: flex !important;
+  }
+  .vertBtn:hover {
+    color: rgb(56, 56, 56) !important;
+  }
+  .video-Tile:hover .vertBtn {
+    display: block !important;
+  }
+  .views {
+    margin-top: -1px;
+    font-size: 12px;
+    color: #606060;
+  }
+  .data {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: rgb(94, 94, 94);
+    cursor: pointer;
+  }
+  .durationTl{
+      position: absolute;
+      top: 175px;
+      right: 5px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 13px;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+  }
+  
+  .data img{
+      height: 30px;
+      width: 30px;
+      border-radius: 15px;
+      margin-right: 10px;
+  
+  }
+  .desc{
+      font-size: 14px;
+      color: #606060;
+    max-width: 700px;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+  
+  .watchLaterTl{
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 20px;
+      padding: 5px;
+      display: none;
+      cursor: pointer;
+      border-radius: 5px;
+      display: none;
+    
+    }
+    
+    
+    .playListAddTl {
+      position: absolute;
+      top: 45px;
+      right: 7px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 20px;
+      padding: 5px;
+      display: none;
+      cursor: pointer;
+      border-radius: 5px;
+      display: none;
+    }
+  
+    .video-Title:hover .watchLater,
+  .video-Title:hover .playListAdd {
+    display: flex;
+  
+  }  
+
+  .img-title {
+    min-width: 500px;
+    max-width: 500px; 
+    height: 290px; 
+    aspect-ratio: 16 / 9; 
+    object-fit: cover;
+  }
+
+  .duration {
+    position: relative;
+    width: 40px;
+    top: 233px;
+    right: 67px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+

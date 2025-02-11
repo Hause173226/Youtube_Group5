@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const API_KEY = "AIzaSyC_KG0a8F9usnTQl_MmTEfL2_elzBpKVNc";
 const MAX_RESULTS = 12;
@@ -153,7 +153,9 @@ export const useTopLiveGames = (apiKey) => {
   useEffect(() => {
     const fetchTopLiveGames = async () => {
       try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,liveBroadcastContent&chart=mostPopular&regionCode=US&videoCategoryId=20&key=${apiKey}`);
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/videos?part=snippet,liveBroadcastContent&chart=mostPopular&regionCode=US&videoCategoryId=20&key=${apiKey}`
+        );
         const data = await response.json();
         setGames(data.items);
       } catch (error) {
