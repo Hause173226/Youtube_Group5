@@ -4,7 +4,7 @@ import { FaSpinner } from "react-icons/fa";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import VideoGrid from "../components/VideoGrid";
-import { fetchPopularVideos, fetchVideosByCategory } from "../utils/AxiosAPI";
+import { fetchPopularVideos, fetchVideosByCategory, useTopLiveGames } from "../utils/AxiosAPI";
 import "./Gaming.css";
 
 const { TabPane } = Tabs;
@@ -17,6 +17,8 @@ function Gaming() {
     const [activeTab, setActiveTab] = useState("now");
     const observer = useRef();
     const loadingRef = useRef(null);
+    const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+    const { games, loading: topLiveGamesLoading } = useTopLiveGames(apiKey);
 
     useEffect(() => {
         setActiveTab("featured");
@@ -91,20 +93,19 @@ function Gaming() {
             <div className="main-content">
                 <Sidebar isOpen={sidebarOpen} />
                 <div
-                    className={`content ${
-                        !sidebarOpen ? "sidebar-closed" : ""
-                    }`}
+                    className={`content ${!sidebarOpen ? "sidebar-closed" : ""
+                        }`}
                 >
                     <div className="trending-container">
                         <div className="trending-header">
                             <div className="trending-icon-title">
                                 <div className="trending-icon">
                                     <img
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm71j8c0igEWdNwutZAJdVqW0nO4qTDGWfLg&s"
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVd8iYaLQ6n9hqCJ6lecCOhzMLtF1T3mxXzA&s"
                                         alt=""
                                     />
                                 </div>
-                                <h1>Gaming</h1>
+                                <h1 style={{ marginLeft: '50px' }}>Gaming</h1>
                             </div>
                             <Tabs
                                 activeKey={activeTab}
@@ -114,11 +115,41 @@ function Gaming() {
                                 <TabPane tab="Featured" key="featured" />
                             </Tabs>
                         </div>
-
-                        <VideoGrid
-                            videos={videos}
-                            lastVideoElementRef={lastVideoElementRef}
-                        />
+                        {/* Render videos in chunks of 4 */}
+                        {Array.from({ length: Math.ceil(videos.length / 4) }).map((_, index) => {
+                            const chunk = videos.slice(index * 4, index * 4 + 4); // Get the next 4 videos
+                            return (
+                                <div key={index}>
+                                    {index === 1 && <h1>Top live games</h1>}
+                                    {index === 2 && <h1>Recommended</h1>}
+                                    {index === 3 && <h1>Trending videos</h1>}
+                                    <VideoGrid
+                                        videos={chunk} // Pass the chunk of 4 videos
+                                        lastVideoElementRef={lastVideoElementRef}
+                                    />
+                                    {index < Math.ceil(videos.length / 4) - 1 && <hr />} {/* Add <hr> except after the last chunk */}
+                                </div>
+                            );
+                        })}
+                        {/* Add additional divs for more video chunks if needed */}
+                        {videos.length > 8 && (
+                            <div>
+                                <VideoGrid
+                                    videos={videos.slice(8, 12)} // Next 4 videos
+                                    lastVideoElementRef={lastVideoElementRef}
+                                />
+                                <hr />
+                            </div>
+                        )}
+                        {videos.length > 12 && (
+                            <div>
+                                <VideoGrid
+                                    videos={videos.slice(12, 16)} // Next 4 videos
+                                    lastVideoElementRef={lastVideoElementRef}
+                                />
+                                <hr />
+                            </div>
+                        )}
                         {loading && (
                             <div className="loading-spinner" ref={loadingRef}>
                                 <FaSpinner size={24} />
