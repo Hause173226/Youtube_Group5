@@ -118,11 +118,11 @@ function Sports() {
               <div className="trending-icon-title">
                 <div className="trending-icon">
                   <img
-                    src="https://png.pngtree.com/png-vector/20220512/ourmid/pngtree-basketball-logo-template-icon-sport-png-image_4614525.png"
+                    src="//yt3.googleusercontent.com/RV7Xjtmnl7ld6OERcxfHRePw3dfRRAcD5_OyEZHiBIA6DBkQwiL0WjHV4nQDrVwOknlJTTbRfQ=s88-c-k-c0x00ffffff-no-rj-mo"
                     alt="Sports Icon"
                   />
                 </div>
-                <h1>Sports</h1>
+                <h1 style={{marginLeft:'50px'}}>Sports</h1>
               </div>
             </div>
 

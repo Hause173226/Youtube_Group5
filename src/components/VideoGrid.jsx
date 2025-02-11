@@ -85,11 +85,7 @@ function VideoGrid({ videos, lastVideoElementRef }) {
                       {formatViews(video.statistics.viewCount)} views
                     </span>
                     <span style={{ margin: '0 8px' }}>•</span>
-                    <span>
-                      <FaThumbsUp />
-                      {formatViews(video.statistics.likeCount)}
-                    </span>
-                    <span style={{ margin: '0 8px' }}>•</span>
+                    
                   </>
                 )}
                 <span>{formatDate(video.snippet.publishedAt)}</span>
